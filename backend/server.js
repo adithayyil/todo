@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const mongoose = require('mongoose')
 const todoRoutes = require('./routes/todos')
 
 // Initiates express app
@@ -16,8 +17,14 @@ app.use((request, response, next) => {
 // Uses bundled routes from todoRoutes
 app.use('/api/todos', todoRoutes)
 
-
-// Listens for requests
-app.listen(4000, () => {
-    console.log('listening on port 4000!!')
+// Connect to database
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    // Listens for requests after we connect to database
+    app.listen(4000, () => {
+    console.log('Connected to database & listening on port 4000!!')
 })
+
+}).catch((errot) => {
+    console.log(console.error())
+})
+
