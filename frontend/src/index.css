@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
 :root {
-  --primary: #404c9c;
+  --primary: #fefefb;
   --error: #e7195a;
 }
 body {
-  background: #f1fefb;
+  background: #fefefb;
   margin: 0;
   font-family: "Poppins";
 }
 header {
-  background: #e6fcf7;
+  background: #fefef2;
 }
 
 header .container {
@@ -29,4 +29,24 @@ header a {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+}
+
+.todo-details {
+  background-color: #f6f8dd;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.todo-details h3 {
+  color: #333;
+  font-size: 18px;
+  margin: 0 0 5px 0;
+}
+
+.todo-details p {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 5px 0;
 }
