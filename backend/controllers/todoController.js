@@ -43,19 +43,46 @@ const createTodo = async (request, response) => {
 
 // Delete a todo
 const deleteTodo = async (request, response) => {
+    const {id} = request.params 
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return response.status(404).json({error: 'No such todo!'})
+    }
+
+    const todo = await Todo.findOneAndDelete({_id: id})
+
+    if (!todo) {
+        return response.status(400).json({error: 'No such todo!'})
+    }
+
+    response.status(200).json(todo)
 }
 
 // Update a todo
 const updateTodo = async (request, response) => {
+    const {id} = request.params 
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return response.status(404).json({error: 'No such todo!'})
+    }
+
+    const todo = await Todo.findOneAndUpdate({_id: id}, {
+        ...request.body
+    })
+
+    if (!todo) {
+        return response.status(400).json({error: 'No such todo!'})
+    }
+
+    response.status(200).json(todo)
 }
-
-
-
 
 
 module.exports = {
     getTodos,
     getTodo,
-    createTodo
+    createTodo,
+    deleteTodo,
+    updateTodo
 
 }
