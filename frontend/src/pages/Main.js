@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import TodoDetails from '../components/TodoDetails'
+import TodoBar from "../components/TodoBar"
 
 const Main = () => {
     const [todos, setTodos] = useState(null)
@@ -22,6 +23,7 @@ const Main = () => {
 
     return (
         <div className="home">
+            < TodoBar />
             <div className="todos">
                 {todos && todos.map((todo) => (
                     <TodoDetails key={todo._id} todo={todo} />
